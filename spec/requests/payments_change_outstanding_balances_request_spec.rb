@@ -9,6 +9,6 @@ describe 'loans have outstanding balances' do
     post "/payments", { :payment => {:loan_id => 1, :amount => 10.00} }, headers
     post "/payments", { :payment => {:loan_id => 1, :amount => 20.00} }, headers
 
-    expect(Loan.last.outstanding_balance).to eq(70.00)
+    expect(Loan.first.outstanding_balance).to eq(70.00)
   end
 end
