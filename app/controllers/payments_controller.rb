@@ -11,7 +11,7 @@ class PaymentsController < ApplicationController
         render payment.errors
       end
     else
-      render 'Error: payment exceeds loan balance'
+      render json: {'Error': 'Payment exceeds loan balance'}
     end
   end
 
