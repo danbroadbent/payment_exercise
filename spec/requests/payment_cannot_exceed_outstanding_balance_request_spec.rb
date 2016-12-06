@@ -6,8 +6,8 @@ describe 'payments cannot exceed outstanding balances' do
     headers = {
       "ACCEPT" => "application/json",
     }
-    post "/payments", { :payment => {:loan_id => 1, :amount => 10.00} }, headers
-    post "/payments", { :payment => {:loan_id => 1, :amount => 100.00} }, headers
+    post "/payments", { :payment => {:loan_id => loan.id, :amount => 10.00} }, headers
+    post "/payments", { :payment => {:loan_id => loan.id, :amount => 100.00} }, headers
 
     expect(JSON.parse(response.body)).to eq({"Error"=>"Payment exceeds loan balance"})
   end

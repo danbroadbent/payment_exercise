@@ -6,9 +6,10 @@ describe 'loans have outstanding balances' do
     headers = {
       "ACCEPT" => "application/json",
     }
-    post "/payments", { :payment => {:loan_id => 1, :amount => 10.00} }, headers
-    post "/payments", { :payment => {:loan_id => 1, :amount => 20.00} }, headers
+    post "/payments", { :payment => {:loan_id => loan.id, :amount => 10.00} }, headers
+    post "/payments", { :payment => {:loan_id => loan.id, :amount => 20.00} }, headers
 
-    expect(Loan.first.outstanding_balance).to eq(70.00)
+    loan.reload
+    expect(loan.outstanding_balance).to eq(70.00)
   end
 end

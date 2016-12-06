@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe LoansController, type: :controller do
   describe '#index' do
-    let(:loan) { Loan.create!(funded_amount: 100.0, outstanding_balance: 100.0) }
+    let(:loan) { Loan.create!(funded_amount: 200.0, outstanding_balance: 200.0) }
 
     it 'responds with a 200' do
       get :index
@@ -11,12 +11,12 @@ RSpec.describe LoansController, type: :controller do
 
     it 'shows the outstanding balance' do
       get :show, id: loan.id
-      expect(JSON.parse(response.body)['outstanding_balance']).to eq("100.0")
+      expect(JSON.parse(response.body)['outstanding_balance']).to eq("200.0")
     end
   end
 
   describe '#show' do
-    let(:loan) { Loan.create!(funded_amount: 100.0, outstanding_balance: 100.0) }
+    let(:loan) { Loan.create!(funded_amount: 200.0, outstanding_balance: 200.0) }
 
     it 'responds with a 200' do
       get :show, id: loan.id
@@ -25,7 +25,7 @@ RSpec.describe LoansController, type: :controller do
 
     it 'shows the outstanding balance' do
       get :show, id: loan.id
-      expect(JSON.parse(response.body)['outstanding_balance']).to eq("100.0")
+      expect(JSON.parse(response.body)['outstanding_balance']).to eq("200.0")
     end
 
     context 'if the loan is not found' do

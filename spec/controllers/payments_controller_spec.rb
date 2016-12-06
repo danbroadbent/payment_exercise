@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe PaymentsController, type: :controller do
   describe '#index' do
     it 'responds with a 200' do
-      loan = Loan.create(funded_amount: 100.00, outstanding_balance: 100.00)
-      payment = Payment.create(amount: 10.0, loan_id: loan.id)
-      payment = Payment.create(amount: 20.0, loan_id: loan.id)
+      loan = Loan.create(funded_amount: 500.00, outstanding_balance: 500.00)
+      payment = Payment.create(amount: 50.0, loan_id: loan.id)
+      payment = Payment.create(amount: 200.0, loan_id: loan.id)
 
       get :index
       expect(JSON.parse(response.body).count).to eq(Payment.all.count)
@@ -13,8 +13,8 @@ RSpec.describe PaymentsController, type: :controller do
   end
 
   describe '#show' do
-    loan = Loan.create(funded_amount: 100.00, outstanding_balance: 100.00)
-    payment = Payment.create!(amount: 10.0, loan_id: loan.id)
+    loan = Loan.create(funded_amount: 500.00, outstanding_balance: 500.00)
+    payment = Payment.create!(amount: 300.0, loan_id: loan.id)
 
     it 'responds with a 200' do
       get :show, id: payment.id
