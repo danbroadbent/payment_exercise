@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "Create payment", :type => :request do
 
   it "creates a payment" do
-    Loan.create(funded_amount: 100.00)
+    Loan.create(funded_amount: 100.00, outstanding_balance: 100.00)
     headers = {
       "ACCEPT" => "application/json",
     }
